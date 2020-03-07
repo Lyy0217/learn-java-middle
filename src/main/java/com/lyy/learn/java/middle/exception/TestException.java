@@ -16,6 +16,8 @@ import java.util.Date;
  *          4.12 不可查异常（运行时异常）
  *          4.13 可检查异常
  *      4.2 Error
+ * 5. 在方法声明中可以直接throws Throwable这个类
+ *
  */
 public class TestException {
     private static int method() {
