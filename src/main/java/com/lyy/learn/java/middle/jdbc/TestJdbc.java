@@ -2,7 +2,6 @@ package com.lyy.learn.java.middle.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -15,6 +14,7 @@ import java.sql.Statement;
  * 4. 执行sql语句
  * 5. 关闭连接
  * 6. 使用try-with-resource的方式，自动关闭连接
+ * 7. Jdbc的增加、修改、删除的sql语句是一样的，直接调用execute语句进行sql执行。但是查询语句涉及到返回数据，需要另行讨论
  */
 public class TestJdbc {
 
@@ -32,12 +32,11 @@ public class TestJdbc {
             e.printStackTrace();
         }
 
-        try(Connection c = DriverManager
+        try (Connection c = DriverManager
                 .getConnection("jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8",
-                "root", "203991");
-            Statement s = c.createStatement();
-        )
-        {
+                        "root", "203991");
+             Statement s = c.createStatement()
+        ) {
 
 
             //2. 建立与数据库的connection连接
@@ -60,9 +59,11 @@ public class TestJdbc {
 
             //准备sql语句
             // 注意字符串要用单引号'
-            String sql = "insert into hero values(null," + "'提莫'" + "," + 313.0f + "," + 50 + ")";
+//            String sql = "insert into hero values(null," + "'提莫3'" + "," + 314.0f + "," + 40 + ")";
+//            String sql = "delete from hero where id =3";
+            String sql = "update hero set name = '盖伦' where id =2";
             s.execute(sql);
-            System.out.println("执行插入语句成功");
+            System.out.println("执行更新语句成功");
 
         } catch (Exception e) {
             e.printStackTrace();
