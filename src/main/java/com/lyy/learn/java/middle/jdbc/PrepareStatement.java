@@ -15,6 +15,17 @@ import java.sql.Statement;
  * 1. 参数设置：statement需要字符串拼接，可读性和维护性都比较差。而preparedStatement可读性好，不易犯错
  * 2. 性能更高
  * 3. 防止SQL注入式攻击
+ * <p>
+ * execute与executeUpdate的区别：
+ * <p>
+ * 不同1：
+ * execute可以执行查询语句
+ * 然后通过getResultSet，把结果集取出来
+ * executeUpdate不能执行查询语句
+ * <p>
+ * 不同2:
+ * execute返回boolean类型，true表示执行的是查询语句，false表示执行的是insert,delete,update等等
+ * executeUpdate返回的是int，表示有多少条数据受到了影响
  */
 public class PrepareStatement {
     public static void main(String[] args) {

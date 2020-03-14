@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 @JDBCConfig(ip = "127.0.0.1", database = "how2java", encoding = "UTF-8", loginName = "root", password = "203991")
 //@JDBCConfig(ip = "127.0.0.1", database = "how2java", encoding = "UTF-8", loginName = "root", password = "203991")
-public class DBUtilAnot{
+public class DBUtilAnot {
 
     static {
         try {
@@ -20,6 +20,7 @@ public class DBUtilAnot{
     }
 
     public static Connection getConnection() throws SQLException {
+        //反射相关知识
         JDBCConfig config = DBUtilAnot.class.getAnnotation(JDBCConfig.class);
 
         String ip = config.ip();
